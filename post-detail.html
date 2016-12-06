@@ -1,0 +1,35 @@
+ <div id="post-stream" ng-controller="postsController">
+        <legend>Tasks</legend>
+			<div class='post' ng-repeat="post in posts | orderBy:'created_at':true" ng-class-odd="'odd'" ng-class-even="'even'">
+		 <div class="">
+			<div class="col-md-offset-1 col-xs-offset-2">
+				<div class="media">
+					<div class="media-body"><br>
+						<span class = "label label-default pull-right">New</span>
+						<a class=""><h4 class="main-heading">Title: {{post.postTitle}}</h4></a>
+						<p class="list-group-item-text"><strong>Text:</strong> {{post.text}}</p>
+ 
+  <tbody>  
+	  <tr>
+		<td>
+          <button class="btn btn-success" ng-click="toggleEdit(id)"> Edit </button>
+          <button class="btn btn-warning" ng-click="deletePost(id)"> Delete </button>
+        </td>
+        <td>
+          <button class="btn btn-primary" ng-click="savePost(id)"> Save </button>
+          <button class="btn btn-danger" ng-click="toggleEdit(id)"> Cancel </button>
+        </td>
+		<td class="pull-right">
+          <button class="btn btn-primary" ng-click="viewPost(post._id)"> Post View </button>
+          <button class="btn btn-primary" type="submit" ng-click="viewtask(post._id)"> View </button>
+          <button class="btn btn-primary" type="submit" ng-click="viewpost()"> Post Apply </button>
+        </td>
+      </tr>
+    </tbody>	
+    
+         </div>
+				</div>
+			</div>
+		</div>
+	</div>
+ </div>

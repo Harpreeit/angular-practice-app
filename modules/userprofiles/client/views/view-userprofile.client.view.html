@@ -1,0 +1,107 @@
+<style>
+    .user {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.one {
+  background-image: url('http://static1.comicvine.com/uploads/square_small/11112/111122896/5402108-goku_v2_by_saodvd-dac3ion.png');
+}
+</style>
+<section data-ng-controller="UserprofilesController" data-ng-init="findOne()"><br/><br/>
+    <div class="jumbotron row">
+        <div class="col-md-2 user one">
+            <img ng-src="/{{userprofile.profileImageURL}}" alt="{{vm.authentication.userprofile.displayName}}" class="header-profile-image" />
+        </div>
+        <div class="col-md-6 text-center">
+            <h1><span ng-bind="userprofile.user.displayName"></span></h1>      
+            <p>Some text that represents "Me"...</p>
+        </div>
+    </div>
+    <div class="page-header">
+        <h1>Personal Information</h1>
+    </div>
+  <div>
+    <div class="list-group-item" data-num-pages="numPages()">
+
+    <div class="list-group">
+      <div class="header">
+        <h3 ng-if="userprofile.user" ng-bind="userprofile.user.displayName"></h3>
+      </div><hr>
+          <small>
+            <em class="text-muted">
+              Posted on
+              <span ng-bind="userprofile.created | date:'mediumDate'"></span>
+            </em>
+          </small><br><br>
+	<!-- Text input-->
+	<div class="row">
+		<label class="col-md-4 control-label" for="">Job category:</label>
+			<div class="col-md-8">
+                <span ng-model="userprofile.category"></span>
+            </div>
+	</div><br/>
+	<!-- Text input-->
+	<div class="row">
+		<div class="">
+		<label class="col-md-4 control-label" for="">mobilePhone:</label>
+			<div class="col-md-8">
+                <span ng-bind="userprofile.mobilePhone"></span>
+			</div>
+		</div>
+	</div><br/>
+	
+		<!-- Text input-->
+	<div class="row">
+		<label class="col-md-4 control-label" for="inputArticleTitle">Work Phone:</label>
+			<div class="col-md-8 inputGroupContainer">
+				<div class="input-group">
+                    <span ng-bind="userprofile.workPhone"></span>
+				</div>
+			</div>
+	</div><br/>
+		
+			<!-- Text input-->
+	<div class="row form-group">
+		<label class="col-md-4 control-label" for="inputArticleTitle">Address:</label>
+			<div class="col-md-8 inputGroupContainer">
+				<div class="input-group">
+                    <span ng-bind="userprofile.address1"></span><small>,&nbsp </small>
+                    <span ng-bind="userprofile.address2"></span>
+				</div>
+			</div>
+	</div>
+	
+			<!-- Text input-->
+	<div class="row form-group">
+		<label class="col-md-4 control-label" for="inputArticleTitle">Location:</label>
+			<div class="col-md-8 inputGroupContainer">
+				<div class="input-group">
+                    <span ng-bind="userprofile.city"></span><small>,&nbsp </small>
+                    <span ng-bind="userprofile.state"></span><small>,&nbsp </small>
+                    <span ng-bind="userprofile.country"></span><small> - </small>
+                    <span ng-bind="userprofile.zip"></span>
+				</div>
+			</div>
+	</div>
+  </div>	
+    <div class="submit"  ng-show="user.authentication">
+            <a class="btn btn-primary" ng-href="/#!/userprofiles/userprofiles/{{userprofile._id}}/edit">
+                <i class="glyphicon glyphicon-edit"></i>
+            </a>
+    </div>
+  </div>
+  </div>
+  <div><br><br><br><br></div>  
+  
+	<div class="navbar-default navbar-bottom navbar-fixed-bottom">
+	  <div class="container-fluid text-center">
+		<p class="text">website design/ logo <i class="glyphicon glyphicon-copyright-mark"></i> 2016 Ujobi Inc. </p>
+	  </div>
+	</div>
+</section>

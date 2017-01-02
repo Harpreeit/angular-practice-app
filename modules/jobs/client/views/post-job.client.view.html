@@ -1,0 +1,216 @@
+
+<section class="clearfix" data-ng-controller="JobsController"><br><br>
+
+	<div>
+<!--	<div id="jobForm"  ng-hide="jobForm">
+		<label>Note: For best results, add precise information.</label>
+		<button class="btn btn-primary btn-lg" ng-click="view = !view" ng-click="!jobForm = jobForm">Add a Task <i class="glyphicon glyphicon-plus"></i></button>
+	</div>	
+-->			<!-- Text input-->
+        <div id="jobForm" class="row form-group" ng-hide="jobForm">
+                <div class="col-sm-4 inputGroupContainer">
+                    <div class="input-group-btn">
+                        <button class="btn btn-primary btn-lg" ng-click="view = !view" ng-click="jobForm = !jobForm">Add a Task <i class="glyphicon glyphicon-plus"> </i></button>
+                    </div>
+                </div>
+        </div><BR>
+		<label class="col-sm-8 control-label" for="inputArticleTitle">Note: For best results, add precise information.</label><br><br>
+	    
+        <div class="panel panel-default">
+		    <div class="panel-heading">
+				<h4 class="panel-title">
+					Post a Task
+				</h4>
+			</div>
+			<div ng-show="view">
+			  <div class="panel-body">
+				<form class="form-horizontal" data-ng-Submit="create()" novalidate>
+                    <fieldset>
+                        <input required maxlength="100" class="form-control" placeholder="Job title" ng-model="newJob.jobTitle"><br>
+                        <input required maxlength="100" class="form-control" placeholder="Position" ng-model="newJob.position"><br>
+                        <input required maxlength="100" class="form-control" placeholder="Module name" ng-model="newJob.moduleName"><br>
+                        <input maxlength="100" class="form-control" placeholder="Company Name" ng-model="newJob.companyName"><br>
+                        <!-- Text input-->
+                        <div class="row form-group">
+                                <div class="col-md-6 inputGroupContainer">
+                                    <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                        <input required maxlength="100" class="form-control" placeholder="email" type="email" ng-model="newJob.email1">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 inputGroupContainer">
+                                    <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                                        <input required maxlength="10" class="form-control" placeholder="Phone" ng-model="newJob.phone1">	
+                                    </div>
+                                </div>
+                        </div><hr>
+                        <!-- Select Basic -->
+                        <div class="row form-group">
+                            <div class="col-md-6 inputGroupContainer">
+                                <label>Select Category </label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                                    <select name="category" class="form-control selectpicker" ng-model="newJob.category">
+                                        <option value=" " >Please select task category</option>
+                                        <option>Accounting</option>
+                                        <option>Art</option>
+                                        <option>Business</option>
+                                        <option>Building and Designing Contractors</option>
+                                        <option >Communication</option>
+                                        <option >Consulting</option>
+                                        <option >Drivers and Movers</option>
+                                        <option >Education</option>
+                                        <option >Engineering and Science</option>
+                                        <option >Entertainment</option>
+                                        <option >Finance</option>
+                                        <option >Health and Physical Training</option>
+                                        <option >Helper and Services</option>
+                                        <option >Information Technology</option>
+                                        <option>Law and Attorney</option>
+                                        <option >Marketing, Media and Sales</option>
+                                        <option >Medical</option>
+                                        <option >Music</option>
+                                        <option >Technical Services</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6 inputGroupContainer">
+                                <label>Sub-Contracting</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                                    <select name="category" class="form-control selectpicker" ng-model="newJob.subCont">
+                                        <option value=" " >Please select task status</option>
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="row form-group">
+                                <div class="col-md-6 inputGroupContainer">
+                                <label>Task duration (Hours) </label>
+                                    <div class="input-group">
+                                        <input required maxlength="100" class="form-control" placeholder="Task duration" ng-model="newJob.taskDuration"><br>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 inputGroupContainer">
+                                <label>Payment Per Hour </label>
+                                    <div class="input-group">
+                                        <input required maxlength="10" class="form-control" placeholder="Should be $9 or above" ng-model="newJob.payRate"><br>	
+                                    </div>
+                                </div>
+                        </div>
+                        <input class="form-control" placeholder="Start Date" ng-model="newJob.startDate"><br>
+                    <!--	<div class="" ng-include="'datepicker.html'"></div>	-->
+                        <hr>					
+                        <input type="url" class="form-control" placeholder="Job link" ng-model="newJob.link"><br>
+                        <input maxlength="100" class="form-control" placeholder="Company or task image" ng-model="newJob.img1"><br>
+                        <!-- Text input-->
+                        <div class="row form-group">
+                                <div class="col-md-12 inputGroupContainer">
+                                    <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                        <textarea required maxlength="500" class="form-control" rows="3" placeholder="Job Description" ng-model="newJob.jobDescription"></textarea>	
+                                    </div>
+                                </div>
+                        </div>
+                        <input required maxlength="100" class="form-control" placeholder="Skills" ng-model="newJob.skills"><br>
+                        <textarea maxlength="250" class="form-control" placeholder="task responsibility" ng-model="newJob.resp"></textarea><br>
+                        <textarea maxlength="250" class="form-control" placeholder="Features" ng-model="newJob.features"></textarea><br>
+                        <textarea maxlength="250" class="form-control" placeholder="task requirements" ng-model="newJob.require"></textarea><br>
+                        <textarea maxlength="250" class="form-control" placeholder="How you want to communicate with the users e.g., Slack, hangouts, etc" ng-model="newJob.communication"></textarea><br>
+                        <textarea maxlength="250" class="form-control" placeholder="Completion" ng-model="newJob.completion"></textarea><br>
+                        <textarea maxlength="250" class="form-control" placeholder="what should your finished product look like?" ng-model="newJob.finProd"></textarea><br>
+                        <textarea maxlength="250" class="form-control" placeholder="Payment" ng-model="newJob.payment"></textarea><br>
+                        <hr>
+                        <!-- Select Basic -->
+                        <div class="row form-group">
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <label class="control-label">Select state</label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Select Basic -->
+                        <div class="row form-group">
+                            <div class="col-md-6 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                                    <select name="state" class="form-control selectpicker" ng-model="newJob.state">
+                                        <option value=" " >Please select your state</option>
+                                        <option>Alabama</option>
+                                        <option>Alaska</option>
+                                        <option >Arizona</option>
+                                        <option >Arkansas</option>
+                                        <option >California</option>
+                                        <option >Colorado</option>
+                                        <option >Connecticut</option>
+                                        <option >Delaware</option>
+                                        <option >District of Columbia</option>
+                                        <option> Florida</option>
+                                        <option >Georgia</option>
+                                        <option >Hawaii</option>
+                                        <option >daho</option>
+                                        <option >Illinois</option>
+                                        <option >Indiana</option>
+                                        <option >Iowa</option>
+                                        <option> Kansas</option>
+                                        <option >Kentucky</option>
+                                        <option >Louisiana</option>
+                                        <option>Maine</option>
+                                        <option >Maryland</option>
+                                        <option> Mass</option>
+                                        <option >Michigan</option>
+                                        <option >Minnesota</option>
+                                        <option>Mississippi</option>
+                                        <option>Missouri</option>
+                                        <option>Montana</option>
+                                        <option>Nebraska</option>
+                                        <option>Nevada</option>
+                                        <option>New Hampshire</option>
+                                        <option>New Jersey</option>
+                                        <option>New Mexico</option>
+                                        <option>New York</option>
+                                        <option>North Carolina</option>
+                                        <option>North Dakota</option>
+                                        <option>Ohio</option>
+                                        <option>Oklahoma</option>
+                                        <option>Oregon</option>
+                                        <option>Pennsylvania</option>
+                                        <option>Rhode Island</option>
+                                        <option>South Carolina</option>
+                                        <option>South Dakota</option>
+                                        <option>Tennessee</option>
+                                        <option>Texas</option>
+                                        <option> Uttah</option>
+                                        <option>Vermont</option>
+                                        <option>Virginia</option>
+                                        <option >Washington</option>
+                                        <option >West Virginia</option>
+                                        <option>Wisconsin</option>
+                                        <option >Wyoming</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3 inputGroupContainer">
+                                <div class="input-group">
+                                    <input required maxlength="20" class="form-control" placeholder="City" ng-model="newJob.city"><br>
+                                </div>
+                            </div>
+                            <div class="col-md-3 inputGroupContainer">
+                                <div class="input-group">
+                                    <input required maxlength="5" class="form-control" placeholder="Zipcode" ng-model="newJob.zipcode"><br>	
+                                </div>
+                            </div>
+                        </div><hr>
+                        <input class="btn submit-btn pull-right panel-footer" type="submit" value="Post Task"/>
+                    </fieldset>
+				</form>
+			  </div>
+			</div>
+		</div>
+	</div>
+</section>
+	

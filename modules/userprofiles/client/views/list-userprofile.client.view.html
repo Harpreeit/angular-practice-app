@@ -1,0 +1,106 @@
+<style>
+    .user {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.one {
+  background-image: url('http://placehold.it/350x150');
+}
+</style>
+<section data-ng-controller="UserprofilesController" data-ng-init="find()"><br/>
+    <div><a class="btn btn-primary" ui-sref="userprofiles.view({ userprofileId: userprofile._id })"> View User Profile</a></div><br/><br/>
+    <div class="jumbotron">
+      <div class="container text-center">
+        <h1><span ng-bind="userprofile.user.displayName"></span>{{userprofile.user.displayName}}</h1>      
+        <p>Some text that represents "Me"...</p>
+        <div class="col-md-2">
+            <img ng-src="/{{vm.authentication.user.profileImageURL}}" alt="{{vm.authentication.user.displayName}}" class="header-profile-image" />
+        </div>
+      </div>
+    </div>
+    <div class="page-header">
+        <h1>Personal Information</h1>
+    </div>
+  <div>
+    <div ng-if="userprofile.user" ng-repeat="userprofile in userprofiles | orderBy:'created':true | filter:search" ng-class-odd="'odd'" ng-class-even="'even'" ui-sref="userprofiles.view({ userprofileId: userprofile._id })" class="list-group-item" data-num-pages="numPages()">
+
+    <div class="list-group">
+      <div class="header">
+        <h3 ng-if="userprofile.user" ng-bind="userprofile.user.displayName"></h3>
+      </div><hr>
+          <small>
+            <em class="text-muted">
+              Posted on
+              <span ng-bind="userprofile.created | date:'mediumDate'"></span>
+            </em>
+          </small><br><br>
+	<!-- Text input-->
+	<div class="row">
+		<label class="col-md-4 control-label" for="">Job category:</label>
+			<div class="col-md-8">
+                <span ng-bind="userprofile.category"></span>
+            </div>
+	</div><br/>
+	<!-- Text input-->
+	<div class="row">
+		<div class="">
+		<label class="col-md-4 control-label" for="">mobilePhone:</label>
+			<div class="col-md-8">
+                <span ng-bind="userprofile.mobilePhone"></span>
+			</div>
+		</div>
+	</div><br/>
+	
+		<!-- Text input-->
+	<div class="row">
+		<label class="col-md-4 control-label" for="inputArticleTitle">Work Phone:</label>
+			<div class="col-md-8 inputGroupContainer">
+				<div class="input-group">
+                    <span ng-bind="userprofile.workPhone"></span>
+				</div>
+			</div>
+	</div><br/>
+		
+			<!-- Text input-->
+	<div class="row form-group">
+		<label class="col-md-4 control-label" for="inputArticleTitle">Address:</label>
+			<div class="col-md-8 inputGroupContainer">
+				<div class="input-group">
+                    <span ng-bind="userprofile.address1"></span><small>,&nbsp </small>
+                    <span ng-bind="userprofile.address2"></span>
+				</div>
+			</div>
+	</div>
+	
+			<!-- Text input-->
+	<div class="row form-group">
+		<label class="col-md-4 control-label" for="inputArticleTitle">Location:</label>
+			<div class="col-md-8 inputGroupContainer">
+				<div class="input-group">
+                    <span ng-bind="userprofile.city"></span><small>,&nbsp </small>
+                    <span ng-bind="userprofile.state"></span><small>,&nbsp </small>
+                    <span ng-bind="userprofile.country"></span><small> - </small>
+                    <span ng-bind="userprofile.zip"></span>
+				</div>
+			</div>
+	</div>
+  </div>	
+    <div class="submit">
+        <div class="">
+            <a class="btn btn-primary" ng-href="/#!/userprofiles/userprofiles/{{userprofile._id}}/edit">
+                <i class="glyphicon glyphicon-edit"></i>
+            </a>
+            <a class="btn btn-primary" data-ng-click="remove()">
+                <i class="glyphicon glyphicon-trash"></i>
+            </a>
+        </div>
+    </div>
+  </div>
+  </div>
+</section>

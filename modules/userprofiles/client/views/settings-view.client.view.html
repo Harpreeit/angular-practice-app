@@ -1,0 +1,52 @@
+<section><br><br>
+  <div class="row">
+    <nav class="col-sm-3 col-md-3" id="mySidenav" class="sidenav">
+      <ul class="nav nav-pills nav-stacked affix">
+        <li ui-sref-active="active">
+          <a data-toggle="pill" ng-href="#userprofiles">Personal Information</a>
+        </li>
+        <li ui-sref-active="active">
+          <a data-toggle="pill" ng-href="#userjobs">Job Experience</a>
+        </li>
+        <li ui-sref-active="active">
+          <a data-toggle="pill" ng-href="#skills">Skills</a>
+        </li>
+        <li ui-sref-active="active">
+          <a data-toggle="pill" ng-href="#projects">Projects</a>
+        </li>
+        <li ui-sref-active="active">
+          <a data-toggle="pill" ng-href="#educations">Education</a>
+        </li>
+        <li ui-sref-active="active">
+          <a data-toggle="pill" ng-href="#achievements">Achievements</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="col-sm-9 col-md-8 tab-content settings-view">
+        <div id="userprofiles">
+            <div ng-include="'/modules/userprofiles/client/views/list-userprofile.client.view.html'">
+            </div>
+        </div>
+        <div id="userjobs">
+            <div ng-include="'/modules/userprofiles/client/views/userjobs/list-userjob.client.view.html'">
+            </div>
+        </div>
+        <div id="skills">
+            <div ng-include="'/modules/userprofiles/client/views/skills/list-skill.client.view.html'">
+            </div>
+        </div>
+        <div id="projects">
+            <div ng-include="'/modules/userprofiles/client/views/projects/list-project.client.view.html'">
+            </div>
+        </div>
+        <div id="educations">
+            <div ng-include="'/modules/userprofiles/client/views/educations/list-education.client.view.html'">
+            </div>
+        </div>
+        <div id="achievements">
+            <div ng-include="'/modules/userprofiles/client/views/achievements/list-achievement.client.view.html'">
+            </div>
+        </div>
+    </div>
+  </div><br/><br/><br/><br/>
+</section>

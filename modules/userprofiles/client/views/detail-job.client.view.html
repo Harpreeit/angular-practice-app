@@ -1,0 +1,90 @@
+
+	<div id="job-stream" ng-controller="JobsController">
+        <legend>Tasks</legend>
+			<div class='job' ng-repeat="job in jobs | orderBy:'created_at':true" ng-class-odd="'odd'" ng-class-even="'even'">
+		 <div class="">
+			<div class="col-md-offset-1 col-xs-offset-2">
+				<div class="media">
+					<div class="media-body"><br>
+						<span class = "label label-default pull-right">New</span>
+						<p>Job Id is {{jobId}}</p>
+						<a class="" ng-href="#/jobpost"><h4 class="main-heading">Title: {{job.jobTitle}}</h4></a>
+						<small class="list-group-item-text disabled" disabled="disabled"> {{job.posted_at | date:"MMM d, y 'at' h:mm a "}} -- posted by {{job.posted_by}}</small><br><br>
+						<p class="list-group-item-text"><strong>Company:</strong> {{job.companyName}}</p>
+						<p class="list-group-item-text"><strong>Category:</strong> {{job.category}}</p>
+						<p class="list-group-item-text"><strong>Job Description:</strong> {{job.jobDescription}}</p>
+						<p class="list-group-item-text"><strong>Duration:</strong> {{job.taskDuration}} hour task</p>
+						<p class="list-group-item-text"><strong>Per Hour:</strong> ${{job.payRate}}/hr</p><br>
+<!--						<div class="form-group">
+							<div class="col-md-2 inputGroupContainer">
+								<div class="input-group pull-right">
+									<button ng-click="apply(job)" value="Apply" class="btn btn-primary pull-right">Apply <span class="glyphicon glyphicon-send"></span></button>
+								</div>
+							</div>
+							<div class="col-md-2 inputGroupContainer">
+								<div class="input-group pull-right">
+									<button ng-click="applyTitle(job)" value="Apply" class="btn btn-primary pull-right">Apply Title <span class="glyphicon glyphicon-send"></span></button>
+								</div>
+							</div>
+							<div class="col-md-2 inputGroupContainer" ng-controller="userAccCtrl">
+								<div class="input-group pull-right">
+									<button  ng-click="myPosts(user)" value="Apply" class="btn btn-primary pull-right">Show posts <span class="glyphicon glyphicon-send"></span></button>
+								</div>
+							</div>
+							<div class="col-md-2 inputGroupContainer">
+								<div class="input-group">
+									<button ng-click="toggleEdit($index)" class="btn btn-success" value="Edit"> Edit </button>
+								</div>
+							</div>
+							<div class="col-md-2 inputGroupContainer">
+								<div class="input-group">
+									<button ng-click="deleteJob($index)" class="btn btn-warning" value="Delete">Remove <span class="glyphicon glyphicon-send"></span></button>
+								</div>
+							</div>
+							<div class="col-md-2 inputGroupContainer">
+								<div class="input-group">
+									<button ng-click="saveJob($index)" class="btn btn-primary" value="Save"> Save </button>
+								</div>
+							</div>
+							<div class="col-md-2 inputGroupContainer">
+								<div class="input-group">
+									<button ng-click="toggleEdit($index)" class="btn btn-danger" value="Cancel"> Cancel </button>
+								</div>
+							</div>
+						</div>
+-->
+	<tbody>  
+	  <tr>
+		<td ng-hide="post.edit">
+          <button class="btn btn-success" ng-click="toggleEdit(id)"> Edit </button>
+          <button class="btn btn-warning" ng-click="deleteJob(id)"> Remove </button>
+          <button class="btn btn-warning" ng-click="deleteTask(id)"> Delete </button>
+        </td>
+        <td ng-show="post.edit">
+          <button class="btn btn-primary" ng-click="saveJob(id)"> Save </button>
+          <button class="btn btn-danger" ng-click="toggleEdit(id)"> Cancel </button>
+        </td>
+		<td class="pull-right">
+          <button class="btn btn-primary" ng-click="viewPost(job._id)"> Post View </button>
+          <button class="btn btn-primary" type="submit" ng-click="viewtask(job._id)"> View Task </button>
+          <button class="btn btn-primary" type="submit" ng-click="viewjob()"> Job Apply </button>
+          <button class="btn btn-primary" ng-click="showtask(job._id)"> Show Task </button>
+        </td>
+      </tr>
+    </tbody>						
+						<div class="form-group" ng-show="authenticated">				    
+							<button class="button btn-md pull-right" ng-click="showDetails = ! showDetails" ng-click="showDetails=true" ng-show="!showDetails">Comment</button>
+							<div class="postComment-details" ng-class="{ 'hidden': ! showDetails }"><br>
+								<p class="">{{current_user | uppercase}}</p>
+								<form class="" ng-submit="job()">
+									<input class="form-control" type="text" placeholder="share your views" ng-model="newJob.comment"><br>
+									<input class="btn submit-btn pull-right" type="submit" value="Post Comment" ng-click="showDetails=false" ng-show="showDetails"/>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	  </div><br>
+	</div>
+</div><br>

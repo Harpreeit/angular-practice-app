@@ -1,0 +1,38 @@
+<section data-ng-controller="JobsController" data-ng-init="find()">
+  <div class="page-header">
+    <h1>Task List</h1>
+  </div>
+    <div class="form-group">
+     <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+        <input type="text" ng-model="search" typeahead="job as job.jobTitle for job in jobs | filter:$viewValue | limitTo:8" class="form-control" typeahead-on-select="jobSearch($item)" placeholder="Search Task by keyword e.g., engineering...">
+     </div>
+    </div>
+
+  <div class="list-group">
+    <a ng-repeat="job in jobs | orderBy:'created_at':true | filter:search" ng-class-odd="'odd'" ng-class-even="'even'" ui-sref="jobs.view({ jobId: job._id })" class="list-group-item" data-num-pages="numPages()">
+      <h4 class="list-group-item-heading" ng-bind="job.jobTitle"></h4>
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="job.posted_at | date:'mediumDate'"></span>
+        by
+        <span ng-if="job.user" ng-bind="job.user.displayName"></span>
+        <span ng-if="!job.user">Deleted User</span>
+      </small><br><br>
+      <p class="list-group-item-text" ng-bind="job.category"></p><br>
+      <p class="list-group-item-text" ng-bind="job.jobDescription"></p><br>
+    </a>
+  </div>    
+  <pagination total-items="jobs.length" ng-model="currentPage" ng-change="pageChanged()" max-size="pageSize" ng-show="jobs.length > pageSize"></pagination>
+    <div class="alert alert-warning text-center" data-ng-hide="!jobs.$resolved || jobs.length">
+    	No Tasks yet, why don't you <a href="/#!/jobs/create">create one</a>?
+    </div>
+    <div><br/><br/>
+    
+    </div>
+	<div class="navbar-default navbar-bottom navbar-fixed-bottom">
+	  <div class="container-fluid text-center">
+		<p class="text">website design/ logo <i class="glyphicon glyphicon-copyright-mark"></i> 2016 Ujobi Inc. </p>
+	  </div>
+	</div>
+</section>

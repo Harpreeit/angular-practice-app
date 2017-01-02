@@ -1,0 +1,42 @@
+<section class="row">
+  <div class="">
+    <div class="page-header">
+        <h1>Achievement</h1>
+    </div>
+    <div data-ng-controller="AchievementsController">
+		<form class="form-horizontal" data-ng-Submit="create()" novalidate>
+            <fieldset>
+                <div class="form-group">
+                        <label for="achievementName">Achievement Name</label>
+                        <input type="text" id="achievementName" name="achievementName" class="form-control" ng-model="newAchievement.achievementName" placeholder="name the achievement" required autofocus>
+</div>
+                <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" id="title" name="title" class="form-control" ng-model="newAchievement.title" placeholder="title or the type of achievement" required>
+                </div>
+                <div class="form-group">
+                      <label for="desc">Description</label>
+                      <textarea type="text" rows="6" id="desc" name="desc" class="form-control" ng-model="newAchievement.desc" placeholder="Brief description"></textarea>
+                </div>
+                <div class="form-group">
+                      <label for="award">Award</label>
+                      <textarea type="text" rows="2" id="award" name="award" class="form-control" ng-model="newAchievement.award" placeholder="mention the award or achievement.."></textarea>
+                </div>
+                <div class="form-group">
+                        <label for="reference">References</label>
+                        <input type="text" id="reference" name="reference" class="form-control" ng-model="newAchievement.reference" placeholder="e.g., Manager: Warren Smith at company name">
+                </div><hr>
+                <div class="text-center form-group">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </fieldset>
+        </form>
+    </div><br/><br/><br/><br/>
+  </div>
+          
+	<div class="navbar-default navbar-bottom navbar-fixed-bottom">
+	  <div class="container-fluid text-center">
+		<p class="text">website design/ logo <i class="glyphicon glyphicon-copyright-mark"></i> 2016 Ujobi Inc. </p>
+	  </div>
+	</div>
+</section>

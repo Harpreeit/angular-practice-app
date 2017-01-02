@@ -1,0 +1,244 @@
+<section><br/><br/>
+  <div class="jumbotron text-center" ng-controller="HeaderController as vm">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
+			<div ng-include="'/modules/core/client/views/head.client.view.html'" class="">
+			</div>
+      </div>
+    </div>
+    <div class="row" ng-hide="vm.authentication.user">
+      <p>
+        <a class="btn btn-primary btn-lg" href="http://meanjs.org" target="_blank">Learn more</a>
+      </p>
+    </div>
+  </div>
+    <div data-ng-controller="JobsController" data-ng-init="find()">
+    <div>
+	<div class="input-group">
+		<span class="input-group-btn btn-group" uib-dropdown keyboard-nav>
+			<button class="btn btn-default" type="button" ng-click="view = !view" ng-click="jobForm = !jobForm"><i class="glyphicon glyphicon-filter"></i> Filters</button>
+			<ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="simple-btn-keyboard-nav">
+				<li ng-model="search.category"><a value="category">Category</a></</li>
+				<li role="separator" class="divider"></li>
+				<li ng-model="search.state"><a  value="state">Location</a></li>
+				<li role="separator" class="divider"></li>
+				<li><a value="taskDuration">Task duration</a></li>
+			</ul>
+		</span>
+		<input type="text" ng-model="search.$" typeahead="job in jobs | filter:$viewValue | limitTo:8" class="form-control" typeahead-on-select="jobSearch($item)" placeholder="Search Task by keyword e.g., engineering...">
+		<span class="input-group-btn">
+            <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
+		</span>
+        </div>
+    		<!-- Text input
+        <div id="jobForm" class="row form-group" ng-hide="jobForm">
+                <div class="col-sm-4 inputGroupContainer">
+                    <div class="input-group-btn">
+                        <button class="btn btn-primary btn-lg" ng-click="view = !view" ng-click="jobForm = !jobForm">Add a Task <i class="glyphicon glyphicon-plus"> </i></button>
+                    </div>
+                </div>
+        </div><BR>-->
+	</div><br/>
+
+            <div ng-show="view" class=" row jumbotron">
+                        <!-- Select Basic -->
+                        <div class="form-group" style="margin-top: 20px;">
+                            <div class="col-md-3 inputGroupContainer">
+                                    <label>Skills: </label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                                    <input ng-model="search.skills">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Select Basic -->
+                        <div class="form-group">
+                            <div class="col-md-3 inputGroupContainer">
+                                    <label>City: </label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                                    <input ng-model="search.city">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Select Basic -->
+                        <div class="form-group">
+                            <div class="col-md-3 inputGroupContainer">
+                                <label>Select State </label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                                    <select name="state" class="form-control selectpicker" ng-model="search.state">
+                                        <option value="">Please select your state</option>
+                                        <option>Alabama</option>
+                                        <option>Alaska</option>
+                                        <option >Arizona</option>
+                                        <option >Arkansas</option>
+                                        <option >California</option>
+                                        <option >Colorado</option>
+                                        <option >Connecticut</option>
+                                        <option >Delaware</option>
+                                        <option >District of Columbia</option>
+                                        <option> Florida</option>
+                                        <option >Georgia</option>
+                                        <option >Hawaii</option>
+                                        <option >daho</option>
+                                        <option >Illinois</option>
+                                        <option >Indiana</option>
+                                        <option >Iowa</option>
+                                        <option> Kansas</option>
+                                        <option >Kentucky</option>
+                                        <option >Louisiana</option>
+                                        <option>Maine</option>
+                                        <option >Maryland</option>
+                                        <option> Mass</option>
+                                        <option >Michigan</option>
+                                        <option >Minnesota</option>
+                                        <option>Mississippi</option>
+                                        <option>Missouri</option>
+                                        <option>Montana</option>
+                                        <option>Nebraska</option>
+                                        <option>Nevada</option>
+                                        <option>New Hampshire</option>
+                                        <option>New Jersey</option>
+                                        <option>New Mexico</option>
+                                        <option>New York</option>
+                                        <option>North Carolina</option>
+                                        <option>North Dakota</option>
+                                        <option>Ohio</option>
+                                        <option>Oklahoma</option>
+                                        <option>Oregon</option>
+                                        <option>Pennsylvania</option>
+                                        <option>Rhode Island</option>
+                                        <option>South Carolina</option>
+                                        <option>South Dakota</option>
+                                        <option>Tennessee</option>
+                                        <option>Texas</option>
+                                        <option> Uttah</option>
+                                        <option>Vermont</option>
+                                        <option>Virginia</option>
+                                        <option >Washington</option>
+                                        <option >West Virginia</option>
+                                        <option>Wisconsin</option>
+                                        <option >Wyoming</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Select Basic -->
+                        <div class="form-group">
+                           <div class="col-md-3 inputGroupContainer">
+                            <label>Select Category </label>
+                            <div class="input-group">
+                              <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                              <select name="category" class="form-control selectpicker" ng-model="search.category">
+                                                    <option value="">Please select task category</option>
+                                                    <option>Accounting</option>
+                                                    <option>Art</option>
+                                                    <option>Business</option>
+                                                    <option>Building and Designing Contractors</option>
+                                                    <option >Communication</option>
+                                                    <option >Consulting</option>
+                                                    <option >Drivers and Movers</option>
+                                                    <option >Education</option>
+                                                    <option >Engineering and Science</option>
+                                                    <option >Entertainment</option>
+                                                    <option >Finance</option>
+                                                    <option >Health and Physical Training</option>
+                                                    <option >Helper and Services</option>
+                                                    <option >Information Technology</option>
+                                                    <option>Law and Attorney</option>
+                                                    <option >Marketing, Media and Sales</option>
+                                                    <option >Medical</option>
+                                                    <option >Music</option>
+                                                    <option >Technical Services</option>
+                             </select>
+                            </div>
+                          </div>
+                        </div>
+            </div>
+            <div class = "row">
+                <a class="btn btn-primary pull-right" ng-href="/#!/userprofiles/userprofiles/list"><i class="glyphicon glyphicon-copyright-user"></i> Search Talent</a>
+            </div>
+<!--  
+    <div class="row">
+      <div class="">
+			<div ng-include="'/modules/core/client/views/job-detail.client.view.html'" class="">
+			</div>
+      </div>
+    </div>
+	
+    <div class="" ng-include="'/modules/jobs/client/views/list-job.client.view.html'"></div>
+-->
+          <div class="page-header">
+            <h1>Task List</h1>
+          </div>
+            <div class="text-right">
+                <p>Sort by:
+                    <select>
+                        <option ng-model="search.created_at" value="created_at">Recent</option>
+                        <option ng-model="-search.created_at" value="-created_at">Older</option>
+                        <option ng-model="-search.taskDuration" value="-taskDuration">Task duration (Low to High)</option>
+                        <option ng-model="search.taskDuration" value="taskDuration">Task duration (High to Low)</option>
+                    </select>
+                </p>
+            </div>
+          <div id="tasklist" class="list-group">
+            <a ng-repeat="job in jobs | orderBy:'created_at':true | filter:search" ui-sref="jobs.view({ jobId: job._id })" class="list-group-item" data-num-pages="numPages()">
+              <h4 class="list-group-item-heading" ng-bind="job.jobTitle"></h4>
+              <small class="list-group-item-text">
+                Posted on
+                <span ng-bind="job.posted_at | date:'mediumDate'"></span>
+                by
+                <span ng-if="job.user" ng-bind="job.user.displayName"></span>
+                <span ng-if="!job.user">Deleted User</span>
+              </small><br><br>
+                <div class="list-group-item-text">
+                    <label class="list-group-item-text control-label" for="">Job category:</label>
+                            <span ng-bind="job.category"></span>
+                </div><br/>
+                <div class="list-group-item-text">
+                    <label class="control-label" for="">Job Description:</label>
+                            <span ng-bind="job.jobDescription"></span>
+                </div><br/>
+            </a>
+          </div>    
+          <pagination total-items="jobs.length" ng-model="currentPage" ng-change="pageChanged()" max-size="pageSize" ng-show="jobs.length  pageSize" boundary-links="true"></pagination>
+            <div class="alert alert-warning text-center" data-ng-hide="!products.$resolved || products.length">
+                No Products yet, why don't you <a href="/#!/products/create">create one</a>?
+            </div>
+          <div class="page-footer">
+            
+          </div>
+        </div>
+
+
+  <div class="well">
+    <h2>Services</h2>
+    <p>
+      Once you're familiar with what we do, register and check out the Task Modules. 
+      <ul>
+        <li><a target="_blank" href="http://meanjs.org/docs.html">About us</a>
+        </li>
+        <!-- <li><a target="_blank" href="http://meanjs.org/generator.html">Yeoman Generator</a>
+				</li> -->
+        <li><a target="_blank" href="http://meanjs.org/modules.html">Contact</a>
+        </li>
+        <li><a target="_blank" href="http://meanjs.org/changelog.html">Business</a>
+        </li>
+        <li><a target="_blank" href="http://meanjs.org/community.html">Universities</a>
+        </li>
+        <li><a target="_blank" href="http://blog.meanjs.org">Marketing</a>
+        </li>
+      </ul>
+    </p>
+  </div><br/><br/>
+
+  		
+	<div class="navbar-default navbar-bottom navbar-fixed-bottom">
+	  <div class="container-fluid text-center">
+		<p class="text">website design/ logo <i class="glyphicon glyphicon-copyright-mark"></i> 2016 Ujobi Inc. </p>
+	  </div>
+	</div>
+  			<div ng-include="'/modules/core/client/views/footer.client.view.html'" class="">
+			</div>
+</section>

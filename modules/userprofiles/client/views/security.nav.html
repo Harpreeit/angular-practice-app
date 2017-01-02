@@ -1,0 +1,66 @@
+<section>
+    <div class="row">
+        <div class="col-sm-9 col-md-8">
+            <a class="user-header" role="button">
+                  <img ng-src="/{{vm.authentication.user.profileImageURL}}" alt="{{vm.authentication.user.displayName}}" class="header-profile-image" />
+                  <span ng-bind="vm.authentication.user.displayName"></span> <b class="caret"></b>
+            </a>
+        </div>
+    </div>
+  <div class="page-header">
+    <h1>Settings</h1>
+  </div>
+  <div class="row">
+    <nav class="col-sm-3 col-md-3">
+      <ul class="nav nav-pills nav-stacked">
+        <li>
+            <a></a>
+        </li>
+        <li ui-sref-active="active">
+          <a data-toggle="pill" ng-href="#userprofiles">Personal Information</a>
+        </li>
+        <li ui-sref-active="active">
+          <a data-toggle="pill" ng-href="#userjobs">Job Experience</a>
+        </li>
+        <li ui-sref-active="active">
+          <a data-toggle="pill" ng-href="#skills">Skills</a>
+        </li>
+        <li ui-sref-active="active">
+          <a data-toggle="pill" ng-href="#projects">Projects</a>
+        </li>
+        <li ui-sref-active="active">
+          <a data-toggle="pill" ng-href="#educations">Education</a>
+        </li>
+        <li ui-sref-active="active">
+          <a data-toggle="pill" ng-href="#achievements">Achievements</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="col-sm-9 col-md-8 tab-content settings-view">
+        <div id="userprofiles" class="tab-pane fade in active">
+            <div ng-include="'/modules/userprofiles/client/views/create-userprofile.client.view.html'">
+            </div>
+        </div>
+        <div id="userjobs" class="tab-pane fade">
+            <div ng-include="'/modules/userprofiles/client/views/userjobs/create-userjob.client.view.html'">
+            </div>
+        </div>
+        <div id="skills" class="tab-pane fade">
+            <div ng-include="'/modules/userprofiles/client/views/skills/create-skill.client.view.html'">
+            </div>
+        </div>
+        <div id="projects" class="tab-pane fade">
+            <div ng-include="'/modules/userprofiles/client/views/projects/create-project.client.view.html'">
+            </div>
+        </div>
+        <div id="educations" class="tab-pane fade">
+            <div ng-include="'/modules/userprofiles/client/views/educations/create-education.client.view.html'">
+            </div>
+        </div>
+        <div id="achievements" class="tab-pane fade">
+            <div ng-include="'/modules/userprofiles/client/views/achievements/create-achievement.client.view.html'">
+            </div>
+        </div>
+    </div>
+  </div><br/><br/><br/><br/>
+</section>

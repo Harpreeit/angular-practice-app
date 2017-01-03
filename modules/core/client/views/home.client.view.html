@@ -22,35 +22,16 @@
             <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
 		</span>
         </div>
-    		<!-- Text input
-        <div id="jobForm" class="row form-group" ng-hide="jobForm">
-                <div class="col-sm-4 inputGroupContainer">
-                    <div class="input-group-btn">
-                        <button class="btn btn-primary btn-lg" ng-click="view = !view" ng-click="jobForm = !jobForm">Add a Task <i class="glyphicon glyphicon-plus"> </i></button>
-                    </div>
-                </div>
-        </div><BR>-->
 	</div><br/>
 
             <div class = "row">
                 <a class="btn btn-primary pull-right" ng-href="/#!/userprofiles/userprofiles/list"><i class="glyphicon glyphicon-copyright-user"></i> Search Talent</a>
             </div>
-<!--  
-    <div class="row">
-      <div class="">
-			<div ng-include="'/modules/core/client/views/job-detail.client.view.html'" class="">
-			</div>
-      </div>
-    </div>
-	
-    <div class="" ng-include="'/modules/jobs/client/views/list-job.client.view.html'"></div>
--->
+
           <div class="page-header">
             <h1>Task List</h1>
           </div>
-  
-          <pagination total-items="jobs.length" ng-model="currentPage" ng-change="pageChanged()" max-size="pageSize" ng-show="jobs.length  pageSize" boundary-links="true"></pagination>
-            <div class="alert alert-warning text-center" data-ng-hide="!products.$resolved || products.length">
+  <div class="alert alert-warning text-center" data-ng-hide="!products.$resolved || products.length">
                 No Products yet, why don't you <a href="/#!/products/create">create one</a>?
             </div>
           <div class="page-footer">

@@ -100,8 +100,7 @@ var mongoose = require('mongoose'),
           },
 		status: {
             type: String,
-            default: '',
-            trim: true
+            default: ''
           },		//active/inactive
 		tasks: {
             type: Number,
@@ -133,34 +132,23 @@ var mongoose = require('mongoose'),
             default: '',
             trim: true
           },
+        profileImage: {
+            type: Schema.ObjectId,
+            ref: 'User'
+        },
+        userSkills: [String],
 		created:{
             type:Date, 
             default:Date.now
             },
-//        company: {
-//            type: Schema.ObjectId,
-//            ref: 'Company'
-//        },
-        project: {
-            type: Schema.ObjectId,
+        project: [{
+            type: Schema.Types.ObjectId,
             ref: 'Project'
-        },
-        userjob: {
-            type: Schema.ObjectId,
-            ref: 'Userjob'
-        },
-        skill: {
-            type: Schema.ObjectId,
-            ref: 'Skill'
-        },
-        achievement: {
-            type: Schema.ObjectId,
-            ref: 'Achievement'
-        },
-        education: {
-            type: Schema.ObjectId,
+        }],
+        education: [{
+            type: Schema.Types.ObjectId,
             ref: 'Education'
-        },
+        }],
         user: {
             type: Schema.ObjectId,
             ref: 'User'
@@ -169,3 +157,4 @@ var mongoose = require('mongoose'),
 
 
 mongoose.model('Userprofile', UserprofileSchema);
+	

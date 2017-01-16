@@ -1,11 +1,11 @@
 (function (app) {
   'use strict';
 
-  app.registerModule('userprofiles', ['core']);// The core module is required for special route handling; see /core/client/config/core.client.routes
+  app.registerModule('userprofiles', ['core'], ['users']);// The core module is required for special route handling; see /core/client/config/core.client.routes
   app.registerModule('userprofiles.admin', ['core.admin']);
   app.registerModule('userprofiles.admin.routes', ['core.admin.routes']);
-  app.registerModule('userprofiles.services');
-  app.registerModule('userprofiles.routes', ['ui.router', 'core.routes', 'userprofiles.services']);
+  app.registerModule('userprofiles.services', ['users.services']);
+  app.registerModule('userprofiles.routes', ['ui.router', 'core.routes', 'userprofiles.services', 'users.routes']);
     
   app.registerModule('userjobs', ['core']);// The core module is required for special route handling; see /core/client/config/core.client.routes
   app.registerModule('userjobs.services');

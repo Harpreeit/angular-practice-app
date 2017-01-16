@@ -9,47 +9,47 @@ var acl = require('acl');
 acl = new acl(new acl.memoryBackend());
 
 /**
- * Invoke Userprofiles Permissions
+ * Invoke Educations Permissions
  */
 exports.invokeRolesPolicies = function () {
   acl.allow([{
     roles: ['admin'],
     allows: [{
-      resources: '/api/userprofiles',
-      permissions: 'admin'
+      resources: '/api/educations',
+      permissions: '*'
     }, {
-      resources: '/api/userprofiles/:userprofileId',
-      permissions: 'admin'
+      resources: '/api/educations/:educationId',
+      permissions: '*'
     }]
   }, {
     roles: ['user'],
     allows: [{
-      resources: '/api/userprofiles',
-      permissions: ['user']
+      resources: '/api/educations',
+      permissions: ['*']
     }, {
-      resources: '/api/userprofiles/:userprofileId',
-      permissions: ['user']
+      resources: '/api/educations/:educationId',
+      permissions: ['*']
     }]
   }, {
     roles: ['guest'],
     allows: [{
-      resources: '/api/userprofiles',
+      resources: '/api/educations',
       permissions: ['get']
     }, {
-      resources: '/api/userprofiles/:userprofileId',
+      resources: '/api/educations/:educationId',
       permissions: ['get']
     }]
   }]);
 };
 
 /**
- * Check If Userprofiles Policy Allows
+ * Check If Educations Policy Allows
  */
 exports.isAllowed = function (req, res, next) {
   var roles = (req.user) ? req.user.roles : ['guest'];
 
-  // If a userprofile is being processed and the current user created it then allow any manipulation
-  if (req.userprofile && req.user && req.userprofile.user && req.userprofile.user.id === req.user.id) {
+  // If a education is being processed and the current user created it then allow any manipulation
+  if (req.education && req.user && req.education.user && req.education.user.id === req.user.id) {
     return next();
   }
 

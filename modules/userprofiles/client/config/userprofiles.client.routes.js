@@ -12,23 +12,34 @@
       .state('userprofiles', {
         abstract: true,
         url: '/userprofiles',
+    //    templateUrl: '/modules/userprofiles/client/views/settings-view.client.view.html',
         template: '<ui-view>',
+        controller: 'UserprofilesController',
+    //    controllerAs: 'vm',
+        data: {
+            roles: ['user', 'admin']
+        }
       })
-//      .state('userprofiles.list', {
-//        url: '/userprofiles/list',
-//        templateUrl: '/modules/userprofiles/client/views/list-userprofile.client.view.html',
-//        controller: 'UserprofilesController'
-//      })
       .state('userprofiles.list', {
         url: '/userprofiles/list',
+        templateUrl: '/modules/userprofiles/client/views/list-userprofile.client.view.html',
+        controller: 'UserprofilesController'
+      })
+      .state('userprofiles.userlist', {
+        url: '/userprofiles/userlist',
         templateUrl: '/modules/userprofiles/client/views/userlist-userprofile.client.view.html',
         controller: 'UserprofilesController'
       })
-      .state('userprofiles.view', {
+      .state('userprofiles.read', {
         url: '/userprofiles/:userprofileId',
         templateUrl: '/modules/userprofiles/client/views/view-userprofile.client.view.html',
         controller: 'UserprofilesController'
       })
+//      .state('userprofiles.profile', {
+//      url: '/userprofiles/profile',
+//      templateUrl: '/modules/userprofiles/client/views/list-userprofile.client.view.html',
+//      controller: 'UserprofilesController'
+//      })
       .state('userprofiles.create', {
         url: '/create',
         templateUrl: '/modules/userprofiles/client/views/create-userprofile.client.view.html',
@@ -38,20 +49,21 @@
 //          pageTitle: 'Userprofile Form'
 //        }
       })
-      .state('userprofiles.edit', {
+      .state('settings.userprofiles.edit', {
         url: '/userprofiles/:userprofileId/edit',
         templateUrl: '/modules/userprofiles/client/views/edit-userprofile.client.view.html',
         controller: 'UserprofilesController'
       })
       .state('userprofiles.setting', {
         url: '/setting',
-        templateUrl: '/modules/userprofiles/client/views/settings.client.view.html',
-        controller: 'UserprofilesController',
-      })
-      .state('userprofiles.settingview', {
-        url: '/settingview',
         templateUrl: '/modules/userprofiles/client/views/settings-view.client.view.html',
         controller: 'UserprofilesController',
+//      })
+//      .state('userprofiles.settingview', {
+//        url: '/:userprofileId/settingview',
+//        templateUrl: '/modules/userprofiles/client/views/settings-view.client.view.html',
+//        controller: 'SettingsController',
+//        controllerAs: 'vm',
       });
   }
 

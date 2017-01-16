@@ -20,6 +20,9 @@
       createOrUpdate: function () {
         var userprofile = this;
         return createOrUpdate(userprofile);
+      },
+      requestViewProfile: function (userprofile){
+          return this.viewProfile(userprofile).$promise;
       }
     });
 
@@ -45,7 +48,7 @@
         handleError(error);
       }
     }
-
+    
     function handleError(error) {
       // Log error
       $log.error(error);

@@ -9,47 +9,47 @@ var acl = require('acl');
 acl = new acl(new acl.memoryBackend());
 
 /**
- * Invoke Userprofiles Permissions
+ * Invoke Projects Permissions
  */
 exports.invokeRolesPolicies = function () {
   acl.allow([{
     roles: ['admin'],
     allows: [{
-      resources: '/api/userprofiles',
-      permissions: 'admin'
+      resources: '/api/projects',
+      permissions: '*'
     }, {
-      resources: '/api/userprofiles/:userprofileId',
-      permissions: 'admin'
+      resources: '/api/projects/:projectId',
+      permissions: '*'
     }]
   }, {
     roles: ['user'],
     allows: [{
-      resources: '/api/userprofiles',
-      permissions: ['user']
+      resources: '/api/projects',
+      permissions: ['*']
     }, {
-      resources: '/api/userprofiles/:userprofileId',
-      permissions: ['user']
+      resources: '/api/projects/:projectId',
+      permissions: ['*']
     }]
   }, {
     roles: ['guest'],
     allows: [{
-      resources: '/api/userprofiles',
+      resources: '/api/projects',
       permissions: ['get']
     }, {
-      resources: '/api/userprofiles/:userprofileId',
+      resources: '/api/projects/:projectId',
       permissions: ['get']
     }]
   }]);
 };
 
 /**
- * Check If Userprofiles Policy Allows
+ * Check If Projects Policy Allows
  */
 exports.isAllowed = function (req, res, next) {
   var roles = (req.user) ? req.user.roles : ['guest'];
 
-  // If a userprofile is being processed and the current user created it then allow any manipulation
-  if (req.userprofile && req.user && req.userprofile.user && req.userprofile.user.id === req.user.id) {
+  // If a project is being processed and the current user created it then allow any manipulation
+  if (req.project && req.user && req.project.user && req.project.user.id === req.user.id) {
     return next();
   }
 

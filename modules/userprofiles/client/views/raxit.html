@@ -1,0 +1,24 @@
+<section style="position: responsive">
+    <div data-ng-controller="UserprofilesController" data-ng-init="findOne()">
+    <div class="jumbotron">
+      <div class="container">
+        <div class="col-md-2">
+            <img ng-src="/{{current_profileImageURL}}" alt="{{vm.authentication.user.displayName}}" style="width:170px; height:150px;" class="header-profile-image" />
+        </div>
+        <div class="col-md-offset-2 col-md-6 text-center">
+            <h2><span ng-bind="userprofile.user.displayName"></span></h2>
+            <h2><span ng-bind="current_displayName"></span></h2><br/>
+        </div>
+        <div class="col-md-offset-2 col-md-6 text-center"> 
+            <p><small><span ng-bind="current_email"></span></small></p>
+        </div>
+      </div>
+        <div class="submit pull-right">
+                <a class="btn btn-lg" ng-href="/#!/settings/profile">
+                    <i class="glyphicon glyphicon-edit"></i>
+                </a>
+        </div>
+    </div>
+
+    </div>
+</section>

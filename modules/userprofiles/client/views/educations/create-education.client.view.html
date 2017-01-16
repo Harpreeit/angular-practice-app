@@ -1,92 +1,37 @@
 <section class="row">
   <div class="">
     <div class="page-header">
-        <h1>Personal Information</h1>
+        <h1>Education</h1>
     </div>
-    <div data-ng-controller="UserprofilesController">
+    <div data-ng-controller="EducationsController">
 		<form class="form-horizontal" data-ng-Submit="create()" novalidate>
             <fieldset>
+                <div class="form-group">
+                        <label for="schoolName">University or School Name</label>
+                        <input type="text" id="schoolName" name="schoolName" class="form-control" ng-model="newEducation.schoolName" placeholder="University name..." required autofocus>
+                </div>
+                <div class="form-group">
+                        <label for="degree">Degree or Diploma</label>
+                        <input type="text" id="degree" name="degree" class="form-control" ng-model="newEducation.degree" placeholder="Degree, diploma, e.g., Master of science or Bachelor of technology" required>
+                </div>
+                <div class="form-group">
+                      <label for="major">Major field of study (specialization)</label>
+                      <input type="text" id="major" name="major" class="form-control" ng-model="newEducation.major" placeholder="Major or specialization achieved from the course...">
+                </div>
                 <!-- Select Basic -->
                 <div class="row form-group">
-                    <div class="col-md-6 inputGroupContainer">
+                    <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
-                            <label class="control-label">Mobile Phone</label>
-                            <input maxlength="10" class="form-control" placeholder="Mobile Phone" ng-model="newUserprofile.mobilePhone"><br>
-                        </div>
-                    </div>
-                    <div class="col-md-6 inputGroupContainer">
-                        <div class="input-group">
-                            <label class="control-label">Work Phone</label>
-                            <input maxlength="10" class="form-control" placeholder="Work Phone" ng-model="newUserprofile.workPhone"><br>
+                            <label class="control-label">Select country</label>
                         </div>
                     </div>
                 </div>
                         <!-- Select Basic -->
                         <div class="row form-group">
-                            <div class="col-md-6 inputGroupContainer">
-                                <label>Select Category </label>
+                            <div class="inputGroupContainer">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                                    <select name="category" class="form-control selectpicker" ng-model="newUserprofile.category">
-                                        <option value=" " >Please select task category</option>
-                                        <option>Accounting</option>
-                                        <option>Art</option>
-                                        <option>Business</option>
-                                        <option>Building and Designing Contractors</option>
-                                        <option >Communication</option>
-                                        <option >Consulting</option>
-                                        <option >Drivers and Movers</option>
-                                        <option >Education</option>
-                                        <option >Engineering and Science</option>
-                                        <option >Entertainment</option>
-                                        <option >Finance</option>
-                                        <option >Health and Physical Training</option>
-                                        <option >Helper and Services</option>
-                                        <option >Information Technology</option>
-                                        <option>Law and Attorney</option>
-                                        <option >Marketing, Media and Sales</option>
-                                        <option >Medical</option>
-                                        <option >Music</option>
-                                        <option >Technical Services</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6 inputGroupContainer">
-                                <div class="input-group">
-                                    <label class="control-label">Skills</label>
-                                    <input class="form-control" placeholder="Add all your Skills here" ng-model="newUserprofile.userSkills"><br>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Select Basic -->
-                        <div class="row form-group">
-                            <div class="col-md-6 inputGroupContainer">
-                                <div class="input-group">
-                                    <label class="control-label">Address line 1</label>
-                                    <input maxlength="50" class="form-control" placeholder="Number and name of the street.." ng-model="newUserprofile.address1"><br>
-                                </div>
-                            </div>
-                            <div class="col-md-6 inputGroupContainer">
-                                <div class="input-group">
-                                    <label class="control-label">Address line 2</label>
-                                    <input maxlength="50" class="form-control" placeholder="Apt or office number, e.g., Apt 14..." ng-model="newUserprofile.address2"><br>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Select Basic -->
-                        <div class="row form-group">
-                            <div class="col-md-4 inputGroupContainer">
-                                <div class="input-group">
-                                    <label class="control-label">Select country</label>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Select Basic -->
-                        <div class="row form-group">
-                            <div class="col-md-6 inputGroupContainer">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                                    <select name="country" class="form-control selectpicker" ng-model="newUserprofile.country">
+                                    <select name="country" class="form-control selectpicker" ng-model="newEducation.country">
                                         <option value=" " >Please select your state</option>
                                             <option value="AF">Afghanistan</option>
                                             <option value="AX">Åland Islands</option>
@@ -344,17 +289,15 @@
                         <!-- Select Basic -->
                         <div class="row form-group">
                             <div class="col-md-4 inputGroupContainer">
-                                <div class="input-group">
                                     <label class="control-label">Select state</label>
-                                </div>
-                            </div>
+                             </div>
                         </div>
                         <!-- Select Basic -->
                         <div class="row form-group">
-                            <div class="col-md-6 inputGroupContainer">
+                            <div class=" inputGroupContainer">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                                    <select name="state" class="form-control selectpicker" ng-model="newUserprofile.state">
+                                    <select name="state" class="form-control selectpicker" ng-model="newEducation.state">
                                         <option value=" " >Please select your state</option>
                                         <option>Alabama</option>
                                         <option>Alaska</option>
@@ -410,19 +353,18 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-3 inputGroupContainer">
-                                <div class="input-group">
-                                    <input required maxlength="20" class="form-control" placeholder="City" ng-model="newUserprofile.city"><br>
-                                </div>
+                        </div><br/>
+                        <!-- Select Basic -->
+                        <div class="row form-group">
+                            <div class="col-md-6 inputGroupContainer">
+                                <input required maxlength="20" class="form-control" placeholder="City" ng-model="newEducation.city"><br>
                             </div>
-                            <div class="col-md-3 inputGroupContainer">
-                                <div class="input-group">
-                                    <input required maxlength="5" class="form-control" placeholder="Zipcode" ng-model="newUserprofile.zip"><br>	
-                                </div>
+                            <div class="col-md-6 inputGroupContainer">
+                                <input required maxlength="5" class="form-control" placeholder="Zipcode" ng-model="newEducation.zip"><br>	
                             </div>
                         </div><hr>
                         <div class="text-center form-group">
-                          <button type="submit" class="btn btn-primary">Save Profile</button>
+                          <button type="submit" class="btn btn-primary">Save</button>
                         </div>
                     </fieldset>
                 </form>

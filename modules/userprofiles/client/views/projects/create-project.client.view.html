@@ -1,0 +1,53 @@
+<section class="row">
+  <div class="">
+  <div class="page-header">
+    <h1>Projects</h1>
+  </div>
+    <div data-ng-controller="ProjectsController">
+		<form class="form-horizontal" data-ng-Submit="create()" novalidate>
+            <fieldset>
+                <div class="form-group">
+                        <label for="projectName">Project Name</label>
+                        <input type="text" id="projectName" name="projectName" class="form-control" ng-model="newProject.projectName" placeholder="Project Name" autofocus>
+                </div>
+                <!-- Select Basic -->
+                <div class="row form-group">
+                        <label class="control-label">Company</label>
+                        <input class="form-control" placeholder="Worked on a project as a team? Add names here." ng-model="newProject.company"><br>
+                </div>
+                <!-- Select Basic -->
+                <div class="row form-group">
+                        <label class="control-label">School</label>
+                        <input class="form-control" placeholder="Worked on a project as a team? Add names here." ng-model="newProject.school"><br>
+                </div>
+                <div class="form-group">
+                        <label for="website">Link (if applicable)</label>
+                        <input type="text" id="website" name="website" class="form-control" ng-model="newProject.website" placeholder="Project link, e.g., if you have created a website as a college project or while employed full time">
+                </div>
+                <div class="form-group">
+                      <label for="desc">Description</label>
+                      <textarea type="text" rows="5" id="desc" name="desc" class="form-control" ng-model="newProject.desc" placeholder="Project Description"></textarea>
+                </div>
+                <div class="form-group">
+                        <label for="fileName">File Name (if applicable)</label>
+                        <input type="text" id="fileName" name="fileName" class="form-control" ng-model="newProject.fileName" placeholder="Example published a research, mention filename and page,article or section number">
+                </div>
+                <!-- Select Basic -->
+                <div class="row form-group">
+                        <label class="control-label">Team members:</label>
+                        <input class="form-control" placeholder="Worked on a project as a team? Add names here." ng-model="newProject.team"><br>
+                </div><hr>
+                <div class="text-center form-group">
+                  <button type="submit" class="btn btn-primary">Save Project</button>
+                </div>
+            </fieldset>
+        </form>
+    </div><br/><br/><br/><br/>
+  </div> 
+        
+	<div class="navbar-default navbar-bottom navbar-fixed-bottom">
+	  <div class="container-fluid text-center">
+		<p class="text">website design/ logo <i class="glyphicon glyphicon-copyright-mark"></i> 2016 Ujobi Inc. </p>
+	  </div>
+	</div>
+</section>

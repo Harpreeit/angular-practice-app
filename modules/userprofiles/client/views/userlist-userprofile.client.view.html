@@ -19,7 +19,7 @@
             <span class="input-group-btn">
                 <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
             </span>
-            </div>
+        </div>
                 <!-- Text input
             <div id="userprofileForm" class="row form-group" ng-hide="userprofileForm">
                     <div class="col-sm-4 inputGroupContainer">
@@ -31,16 +31,6 @@
 	</div><br/>
 
             <div ng-show = "view" class = "row jumbotron">
-                        <!-- Select Basic -->
-                        <div class="form-group" style="margin-top: 20px;">
-                            <div class="col-md-3 inputGroupContainer">
-                                    <label>Skills: </label>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                                    <input ng-model="search.skills">
-                                </div>
-                            </div>
-                        </div>
                         <!-- Select Basic -->
                         <div class="form-group">
                             <div class="col-md-3 inputGroupContainer">
@@ -146,45 +136,46 @@
                           </div>
                         </div>
             </div>
-            <div class="row">
-                <a class="btn btn-primary pull-right" ng-href="/#!/jobs/jobs/list"><i class="glyphicon glyphicon-copyright-user"></i> Search Task</a>
-            </div><br>
-    <div class="list-group">
-        <a ng-repeat="userprofile in userprofiles | orderBy:'created':true | filter:search" ng-class-odd="'odd'" ng-class-even="'even'" ui-sref="userprofiles.view({ userprofileId: userprofile._id })" class="list-group-item" data-num-pages="numPages()">
-
-          <div class="header">
-            <h4 ng-if="userprofile.user" ng-bind="userprofile.user.displayName"></h4>
-          </div>
-              <small>
-                <em class="text-muted">
-                  Posted on
-                  <span ng-bind="userprofile.created | date:'mediumDate'"></span>
-                </em>
-              </small><br><br>
-            <!-- Text input-->
-            <div class="list-group-item-text">
-                <label class="list-group-item-text control-label" for="">Job category:</label>
-                        <span ng-bind="userprofile.category"></span>
-            </div><br>
-            <!--- Skills -->
-     <!---         <div data-ng-controller="SkillsController" data-ng-init="find()">
-                <a ng-repeat="skill in skills | orderBy:'created':true | filter:search" ng-class-odd="'odd'" ng-class-even="'even'" class="list-group-item" data-num-pages="numPages()">
-               
-                    <!-- Text input-->
-    <!---                    <div class="">
-                            <span ng-bind="skill.skills"></span>
-                            <p>{{skill.skills}}</p>
-                        </div>
-                </a>
-             </div> -->
-            <!-- Text input-->
-            <div class="list-group-item-text form-group">
-                <label class="list-group-item-text control-label" for="inputArticleTitle">Location:</label>
-                <span ng-bind="userprofile.city"></span><small>,&nbsp </small>
-                <span ng-bind="userprofile.state"></span><small>,&nbsp </small>
-                <span ng-bind="userprofile.country"></span><small> - </small>
-                <span ng-bind="userprofile.zip"></span>
-            </div>
+    <div class="list-group media">
+        <a ng-repeat="userprofile in userprofiles | orderBy:'created':true | filter:search" ng-class-odd="'odd'" ng-class-even="'even'" ui-sref="userprofiles.read({ userprofileId: userprofile._id })" class="list-group-item" data-num-pages="numPages()">
+              <div class="media-left">
+                <img ng-src="/{{userprofile.user.profileImageURL}}" style="width:100px; height:100px;" class="header-profile-image media-object" />
+              </div>
+              <div class="media-body">
+                <div class="header">
+                    <h4 ng-if="userprofile.user" ng-bind="userprofile.user.displayName"></h4>
+                </div>
+                  <small>
+                    <em class="text-muted">
+                      Posted on
+                      <span ng-bind="userprofile.created | date:'mediumDate'"></span>
+                    </em>
+                  </small><br><br>
+                <!-- Text input-->
+                <div class="list-group-item-text">
+                    <label class="list-group-item-text control-label" for="">Job category:</label>
+                            <span ng-bind="userprofile.category"></span>
+                </div><br>
+                <!-- Text input-->
+                <div class="list-group-item-text form-group">
+                    <label class="list-group-item-text control-label" for="inputArticleTitle">Location:</label>
+                    <span ng-bind="userprofile.city"></span><small>,&nbsp </small>
+                    <span ng-bind="userprofile.state"></span><small>,&nbsp </small>
+                    <span ng-bind="userprofile.country"></span><small> - </small>
+                    <span ng-bind="userprofile.zip"></span>
+                </div>
+                <!--- Skills -->
+         <!---         <div data-ng-controller="SkillsController" data-ng-init="find()">
+                    <a ng-repeat="skill in skills | orderBy:'created':true | filter:search" ng-class-odd="'odd'" ng-class-even="'even'" class="list-group-item" data-num-pages="numPages()">
+                   
+                        <!-- Text input-->
+        <!---               <div class="">
+                                <span ng-bind="skill.skills"></span>
+                                <p>{{skill.skills}}</p>
+                            </div>
+                    </a>
+                 </div> -->
+                </div>
         </a>	
     </div>
     <div>

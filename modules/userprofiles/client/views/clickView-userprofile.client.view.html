@@ -3,18 +3,17 @@
     <div data-ng-controller="UserprofilesController" data-ng-init="findOne()">
         <div class="jumbotron row">
             <div class="col-md-2">
-                <img ng-src="/{{userprofile.user.profileImageURL}}" style="width:160px; height:150px;" class="header-profile-image" />
+                <img ng-src="/{{current_profileImageURL}}" alt="{{vm.authentication.userprofile.displayName}}" style="width:150px; height:150px;" class="header-profile-image" />
             </div>
             <div class="col-md-offset-2 col-md-6 text-center">
                 <h1><span ng-bind="userprofile.user.displayName"></span></h1>      
-                <p><span ng-bind="userprofile.user.email"></span></p> 
+                <p>Some text that represents "Me"...</p>
             </div>
         </div>
         <div class="page-header">
             <h1>Personal Information</h1>
         </div>
-    <div> This is posted by user id -<span ng-bind="userprofile.user._id"></span></div>
-    <div> logged in user id -<span ng-bind="ram"></span></div>
+    <div><span ng-bind="ram"></span> email is</div>
       <div>
         <div class="list-group-item" data-num-pages="numPages()">
 
@@ -24,7 +23,7 @@
           </div><hr>
               <small>
                 <em class="text-muted">
-                   Posted on
+                  Posted on
                   <span ng-bind="userprofile.created | date:'mediumDate'"></span>
                 </em>
               </small><br><br>
@@ -86,8 +85,28 @@
         </div>
       </div>
       </div>
-    </div>  
-    	
+    </div>
+        <div id="userjobs">
+            <div ng-include="'/modules/userprofiles/client/views/userjobs/list-userjob.client.view.html'">
+            </div>
+        </div>
+        <div id="skills">
+            <div ng-include="'/modules/userprofiles/client/views/skills/list-skill.client.view.html'">
+            </div>
+        </div>
+        </div>
+        <div id="projects">
+            <div ng-include="'/modules/userprofiles/client/views/projects/list-project.client.view.html'">
+            </div>
+        </div>
+        <div id="educations">
+            <div ng-include="'/modules/userprofiles/client/views/educations/list-education.client.view.html'">
+            </div>
+        </div>
+        <div id="achievements">
+            <div ng-include="'/modules/userprofiles/client/views/achievements/list-achievement.client.view.html'">
+            </div>
+        </div>
     <div><br><br><br><br></div>  
   
 	<div class="navbar-default navbar-bottom navbar-fixed-bottom">

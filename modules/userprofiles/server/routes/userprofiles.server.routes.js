@@ -8,12 +8,16 @@ var userprofilesPolicy = require('../policies/userprofiles.server.policy'),
 
 module.exports = function (app) {
   // Userprofiles collection routes
-  app.route('/api/userprofiles').all(userprofilesPolicy.isAllowed)
+  app.route('/api/userprofiles')
     .get(userprofiles.list)
     .post(userprofiles.create);
-
+  
   // Single userprofile routes
-  app.route('/api/userprofiles/:userprofileId').all(userprofilesPolicy.isAllowed)
+//  app.route('/api/userprofiles')
+//    .get(userprofiles.profile);
+    
+  // Single userprofile routes
+  app.route('/api/userprofiles/:userprofileId')
     .get(userprofiles.read)
     .put(userprofiles.update)
     .delete(userprofiles.delete);
